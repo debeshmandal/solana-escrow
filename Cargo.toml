@@ -1,5 +1,5 @@
 [package]
-name = "bpf-program-template"
+name = "solana-escrow"
 version = "0.1.0"
 edition = "2018"
 license = "WTFPL"
@@ -7,9 +7,7 @@ publish = false
 
 [dependencies]
 solana-program = "=1.8.1"
-
-[features]
-test-bpf = []
+ferris-says = "0.2"
 
 [dev-dependencies]
 assert_matches = "1.4.0"
