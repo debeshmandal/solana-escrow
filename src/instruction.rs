@@ -25,7 +25,7 @@ pub enum EscrowInstruction {
 impl EscrowInstruction {
   // unpacks a byte bugger into a [EscrowInstruction](enum.EscrowInstruction.html)
   pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
-    let (tag, rest) = inut.split_first().ok_or(InvalidInstruction)?;
+    let (tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
 
     // the tag is the first part of the instruction (input)
     // if it is 0 then run unpack_amount
@@ -34,7 +34,7 @@ impl EscrowInstruction {
       0 => Self::InitEscrow {
         amount: Self::unpack_amount(rest)?,
       },
-      _ = return Err(InvalidInstruction.into()),
+      _ => return Err(InvalidInstruction.into()),
     })
   }
 
@@ -44,7 +44,7 @@ impl EscrowInstruction {
       .get(..8)
       .and_then(|slice| slice.try_into().ok())
       .map(u64::from_le_bytes)
-      .ok_or(InvalidInstruction)
+      .ok_or(InvalidInstruction)?;
     Ok(amount)
   }
 }
