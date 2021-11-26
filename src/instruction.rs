@@ -31,9 +31,16 @@ impl EscrowInstruction {
     // if it is 0 then run unpack_amount
     // else raise error
     Ok(match tag {
+
+      // InitEscrow is a successful endpoint
       0 => Self::InitEscrow {
         amount: Self::unpack_amount(rest)?,
       },
+
+      // Insert more successful endpoints here
+      // E.g. X => Self::InitEscrow {amount: ...}
+
+      // This error is the default endpoint
       _ => return Err(InvalidInstruction.into()),
     })
   }

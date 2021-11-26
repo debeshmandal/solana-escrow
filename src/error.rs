@@ -8,6 +8,14 @@ pub enum EscrowError {
     /// Invalid instruction
     #[error("Invalid Instruction")]
     InvalidInstruction,
+
+    // Incorrect Program ID
+    //#[error("Incorrect Program ID")]
+    //IncorrectProgramId,
+
+    // Missing Required Signature
+    //#[error("Missing Required Signature")]
+    //MissingRequiredSignature,
 }
 
 impl From<EscrowError> for ProgramError {
